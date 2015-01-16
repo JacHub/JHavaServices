@@ -1,4 +1,3 @@
-import cucumber.api.PendingException;
 import cucumber.api.java.nl.Als;
 import cucumber.api.java.nl.Dan;
 import cucumber.api.java.nl.En;
@@ -16,7 +15,8 @@ public class StepDefinitions {
     String beschrijving;
     List<String> mailadressen;
 
-    private MailService mailService = mock(MailService.class);
+    private MailService mailService;
+//    private MailService mailService = mock(MailService.class);
 
     @Gegeven("^een evenement \"([^\"]*)\"$")
     public void een_evenement(String arg1) throws Throwable {
@@ -43,7 +43,9 @@ public class StepDefinitions {
 
     @Als("^ik de uitnodiging verstuur$")
     public void ik_de_uitnodiging_verstuur() throws Throwable {
-        // Express the Regexp above with the code you wish you had
+        mailService = mock(MailService.class);
+
+//        uitnodiging.verstuurUitnodigingen();
         for (Genodigde mailadres : this.uitnodiging.genodigden) {
             mailService.verstuurEmail(this.evenement.naam , this.uitnodiging.beschrijving,mailadres.emailadres);
         }
@@ -51,7 +53,6 @@ public class StepDefinitions {
 
     @Dan("^verwacht ik dat elke genodigde een uitnodiging ontvangt$")
     public void verwacht_ik_dat_elke_genodigde_een_uitnodiging_ontvangt() throws Throwable {
-        // Express the Regexp above with the code you wish you had
         for (Genodigde mailadres : this.uitnodiging.genodigden) {
             verify(mailService).verstuurEmail(evenement.naam, uitnodiging.beschrijving, mailadres.emailadres);
             System.out.println("check adres "+mailadres);

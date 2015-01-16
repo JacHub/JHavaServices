@@ -13,4 +13,10 @@ public class Uitnodiging {
         this.beschrijving = beschrijving;
         this.genodigden = genodigden;
     }
+    public void verstuurUitnodigingen(){
+        EmailService mailService = new EmailService();
+        for (Genodigde genodigde : genodigden) {
+            mailService.verstuurEmail(evenement.naam,beschrijving,genodigde.emailadres );
+        }
+    }
 }
