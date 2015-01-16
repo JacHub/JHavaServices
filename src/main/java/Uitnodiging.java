@@ -7,4 +7,10 @@ public class Uitnodiging {
     Evenement evenement;
     String beschrijving;
     List<Genodigde> genodigden;
+    Uitnodiging(){}
+    Uitnodiging(Evenement evenement,String beschrijving,List<Genodigde> genodigden){
+        this.evenement = evenement;
+        this.beschrijving = beschrijving;
+        this.genodigden = genodigden;
+    }
 }

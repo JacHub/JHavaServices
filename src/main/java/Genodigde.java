@@ -3,4 +3,12 @@
  */
 public class Genodigde {
     String emailadres;
+
+    Genodigde(){}
+
+    Genodigde(String emailadres){
+        this.emailadres = emailadres;
+
+    }
+
 }
