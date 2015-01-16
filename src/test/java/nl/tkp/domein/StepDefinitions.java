@@ -1,7 +1,12 @@
+package nl.tkp.domein;
+
 import cucumber.api.java.nl.Als;
 import cucumber.api.java.nl.Dan;
 import cucumber.api.java.nl.En;
 import cucumber.api.java.nl.Gegeven;
+import nl.tkp.domein.Evenement;
+import nl.tkp.domein.Genodigde;
+import nl.tkp.domein.Uitnodiging;
 
 import java.util.ArrayList;
 import java.util.List;

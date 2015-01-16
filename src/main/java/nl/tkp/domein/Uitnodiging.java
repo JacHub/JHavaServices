@@ -1,3 +1,9 @@
+package nl.tkp.domein;
+
+import nl.tkp.domein.EmailService;
+import nl.tkp.domein.Evenement;
+import nl.tkp.domein.Genodigde;
+
 import java.util.List;
 
 /**
