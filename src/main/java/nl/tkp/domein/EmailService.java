@@ -5,7 +5,7 @@ package nl.tkp.domein;
  */
 public class EmailService implements MailService {
     public void verstuurEmail(String onderwerp, String bericht, String emailAdres) {
-        System.out.println("Verstuur mail");
+        System.out.println("Verstuur mail via de Emailservice");
     }
 
 }

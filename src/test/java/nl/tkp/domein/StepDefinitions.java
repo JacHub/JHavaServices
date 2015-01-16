@@ -15,8 +15,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class StepDefinitions {
-    Evenement evenement = new Evenement();
-    Uitnodiging uitnodiging = new Uitnodiging();
+    Evenement evenement;
+    Uitnodiging uitnodiging;
     String beschrijving;
     List<String> mailadressen;
 
@@ -25,14 +25,12 @@ public class StepDefinitions {
 
     @Gegeven("^een evenement \"([^\"]*)\"$")
     public void een_evenement(String arg1) throws Throwable {
-        evenement.naam = arg1;
+        evenement = new Evenement(arg1);
     }
 
     @En("^uitnodiging met de volgende beschrijving:$")
     public void uitnodiging_met_de_volgende_beschrijving(String beschrijving) throws Throwable {
-        uitnodiging.evenement = this.evenement;
-        uitnodiging.beschrijving = beschrijving;
-        this.beschrijving = beschrijving;
+        uitnodiging = new Uitnodiging(this.evenement,beschrijving);
     }
 
     @En("^de volgende genodigden met emailadres:$")
@@ -51,16 +49,16 @@ public class StepDefinitions {
         mailService = mock(MailService.class);
 
 //        uitnodiging.verstuurUitnodigingen();
-        for (Genodigde mailadres : this.uitnodiging.genodigden) {
-            mailService.verstuurEmail(this.evenement.naam , this.uitnodiging.beschrijving,mailadres.emailadres);
+        for (Genodigde genodigde : this.uitnodiging.genodigden) {
+            mailService.verstuurEmail(this.evenement.naam , this.uitnodiging.beschrijving,genodigde.emailadres);
         }
     }
 
     @Dan("^verwacht ik dat elke genodigde een uitnodiging ontvangt$")
     public void verwacht_ik_dat_elke_genodigde_een_uitnodiging_ontvangt() throws Throwable {
-        for (Genodigde mailadres : this.uitnodiging.genodigden) {
-            verify(mailService).verstuurEmail(evenement.naam, uitnodiging.beschrijving, mailadres.emailadres);
-            System.out.println("check adres "+mailadres);
+        for (Genodigde genodigde : this.uitnodiging.genodigden) {
+            verify(mailService).verstuurEmail(evenement.naam, uitnodiging.beschrijving, genodigde.emailadres);
+            System.out.println("check adres "+genodigde.emailadres);
         }
 
     }

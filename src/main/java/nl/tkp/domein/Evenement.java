@@ -8,5 +8,6 @@ public    String naam;
 public Uitnodiging uitnodiging;
 
     Evenement(){}
+    Evenement(String naam){ this.naam = naam;}
 
 }
