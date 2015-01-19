@@ -15,14 +15,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class StepDefinitions {
-    String evenementnaam;
-    String beschrijving;
-    List<String> mailadressen;
+    private String evenementnaam;
+    private String beschrijving;
+    private List<String> mailadressen;
 
-    Evenement evenement;
+    private Evenement evenement;
 
-    private MailService mailService;
-//    private MailService mailService = mock(MailService.class);
+//    private MailService mailService;
+    private MailService mailService = mock(EmailService.class);
 
     @Gegeven("^een evenement \"([^\"]*)\"$")
     public void een_evenement(String evenement) throws Throwable {
@@ -47,21 +47,15 @@ public class StepDefinitions {
             genodigden.add(genodigde);
         }
         Uitnodiging uitnodiging = new Uitnodiging(this.beschrijving,genodigden);
-        evenement = new Evenement(this.evenementnaam, uitnodiging);
-
-        mailService = mock(MailService.class);
-
-//        evenement.verstuurUitnodigingen();
-        for (Genodigde genodigde : uitnodiging.genodigden) {
-            mailService.verstuurEmail(evenement.naam , uitnodiging.beschrijving,genodigde.emailadres);
-        }
+        evenement = new Evenement(this.evenementnaam, uitnodiging, mailService);
+        evenement.verstuurUitnodigingen();
     }
 
     @Dan("^verwacht ik dat elke genodigde een uitnodiging ontvangt$")
     public void verwacht_ik_dat_elke_genodigde_een_uitnodiging_ontvangt() throws Throwable {
-        for (Genodigde genodigde : evenement.uitnodiging.genodigden) {
-            verify(mailService).verstuurEmail(evenement.naam, evenement.uitnodiging.beschrijving, genodigde.emailadres);
-            System.out.println("check adres "+genodigde.emailadres);
+        for (Genodigde genodigde : evenement.getUitnodiging().getGenodigden()) {
+            verify(mailService).verstuurEmail(evenement.getNaam(), evenement.getUitnodiging().getBeschrijving(), genodigde.getEmailadres());
+            System.out.println("check adres "+genodigde.getEmailadres());
         }
 
     }
