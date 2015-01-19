@@ -13,13 +13,6 @@ public class Uitnodiging {
     private String beschrijving;
     private List<Genodigde> genodigden;
 
-    Uitnodiging() {
-    }
-
-    Uitnodiging(String beschrijving) {
-        this.beschrijving = beschrijving;
-    }
-
     Uitnodiging(String beschrijving, List<Genodigde> genodigden) {
         this.beschrijving = beschrijving;
         this.genodigden = genodigden;
@@ -28,16 +21,8 @@ public class Uitnodiging {
         return beschrijving;
     }
 
-    public void setBeschrijving(String beschrijving) {
-        this.beschrijving = beschrijving;
-    }
-
     public List<Genodigde> getGenodigden() {
         return genodigden;
-    }
-
-    public void setGenodigden(List<Genodigde> genodigden) {
-        this.genodigden = genodigden;
     }
 
 }

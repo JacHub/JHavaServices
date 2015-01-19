@@ -18,10 +18,7 @@ public class StepDefinitions {
     private String evenementnaam;
     private String beschrijving;
     private List<String> mailadressen;
-
     private Evenement evenement;
-
-//    private MailService mailService;
     private MailService mailService = mock(EmailService.class);
 
     @Gegeven("^een evenement \"([^\"]*)\"$")
