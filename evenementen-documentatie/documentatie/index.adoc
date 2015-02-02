@@ -1,0 +1,7 @@
+= Evenementen applicatie
+Richard de Ruiter <ruiter.r@tkppensioen.nl>
+${project.version}
+:imagesdir: ./images
+
+== Resourcedomein klassendiagram
+
