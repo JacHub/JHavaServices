@@ -7,7 +7,7 @@
 
     <groupId>nl.tkp.evenementen</groupId>
     <artifactId>evenementen</artifactId>
-    <name>Evenementen applicatie</name>
+    <name>Evenementen aggregator</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
