@@ -6,7 +6,6 @@ import cucumber.api.java.nl.Dan;
 import cucumber.api.java.nl.En;
 import cucumber.api.java.nl.Gegeven;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
@@ -36,24 +35,9 @@ public class StepDefinitions {
 
     @Als("^ik de uitnodiging verstuur$")
     public void ik_de_uitnodiging_verstuur() throws Throwable {
-        List<Genodigde> genodigden = new ArrayList<Genodigde>();
-        for (String emailadres: emailadressen) {
-            Genodigde genodigde = new Genodigde();
-            genodigde.setEmailadres(emailadres);
-            genodigden.add(genodigde);
-        }
-
-        Uitnodiging uitnodiging = new Uitnodiging();
-        uitnodiging.setBeschrijving(beschrijving);
-        uitnodiging.setGenodigden(genodigden);
-
-        Evenement evenement = new Evenement();
-        evenement.setNaam(naam);
-        evenement.setUitnodiging(uitnodiging);
-
-        uitnodiging.setEvenement(evenement);
-        uitnodiging.setMailService(mailService);
-        uitnodiging.verstuur();
+        Evenement evenement = EvenementFactory.createEvenement(naam, beschrijving,
+                emailadressen, mailService);
+        evenement.verstuurUitnodiging();
     }
 
     @Dan("^verwacht ik dat elke genodigde een uitnodiging ontvangt$")

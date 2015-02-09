@@ -3,11 +3,11 @@ package nl.tkp.uitnodigingen;
 public class Genodigde {
     private String emailadres;
 
-    public String getEmailadres() {
-        return emailadres;
+    public Genodigde(String emailadres) {
+        this.emailadres = emailadres;
     }
 
-    public void setEmailadres(String emailadres) {
-        this.emailadres = emailadres;
+    public String getEmailadres() {
+        return emailadres;
     }
 }
