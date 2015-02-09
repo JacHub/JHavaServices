@@ -12,7 +12,7 @@ public class Uitnodiging {
         this.genodigden = genodigden;
         this.mailService = mailService;
     }
-
+//
     public void verstuur(String evenementnaam) {
         if (mailService == null) {
             throw new IllegalStateException("mailservice mag niet null zijn");
