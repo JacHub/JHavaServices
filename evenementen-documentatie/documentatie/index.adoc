@@ -5,3 +5,5 @@ ${project.version}
 
 == Resourcedomein klassendiagram
 
+blab
+
