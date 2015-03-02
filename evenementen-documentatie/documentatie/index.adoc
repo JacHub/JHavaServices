@@ -3,7 +3,8 @@ Richard de Ruiter <ruiter.r@tkppensioen.nl>
 ${project.version}
 :imagesdir: ./images
 
-== Resourcedomein klassendiagram
+image:tkp-logo.png["TKP",role="right"]
 
-blabla
+== Story-mapping evenementenapplicatie
 
+image:Storymapping.png[]
