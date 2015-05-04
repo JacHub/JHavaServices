@@ -1,0 +1,142 @@
+= Evenementen applicatie
+Richard de Ruiter <ruiter.r@tkppensioen.nl>
+${project.version}
+:imagesdir: ./images
+
+image:tkp-logo.png["TKP",role="right"]
+
+== Story-mapping evenementenapplicatie
+
+image:Storymapping.png[]
+
+Modelleren in UML – Community of practice Analyse & Design
+
+
+== Use case diagram
+
+Een use case toont een functie van het systeem zoals een actor die waarneemt. Een use case heeft 2 belangrijke kenmerken:
+1.	Een use case wordt altijd gestart t.b.v. een actor en direct of indirect op verzoek van die actor
+2.	Een use case vervult een zelfstandige functie en levert de betreffende actor een bruikbaar resultaat op
+
+
+Use cases uitnodigingen-applicatie
+
+1.	Aanmaken evenement
+2.	Wijzigen evenement
+3.	Versturen uitnodiging
+4.	Versturen herinnering
+5.	Verwerken reacties op uitnodigingen
+6.	Aanmaken overzicht gemaakte keuzes
+7.	Versturen bevestiging gemaakte keuze
+8.	Maken keuze (J/N) op uitnodiging
+9.	Opgeven voorkeur activiteiten
+10.	Opgeven dieetwensen
+11.	Wijzigen keuze (J/N) op uitnodiging
+12.	Wijzigen voorkeur activiteiten
+13.	Wijzigen dieetwensen
+14.	Beëindigen inschrijvingsmogelijkheid op evenement
+15.	Beëindigen inschrijfmogelijkheid op voorkeursactiviteit
+
+
+Opmerkingen over de onderkende use cases
+
+5. Verwerken reacties op uitnodigingen: dit is een interpretatie en onduidelijk en te algemeen. Vanuit het oogpunt van de gebruiker van het systeem wordt er geen duidelijk resultaat beschreven.
+
+6. Aanmaken overzicht gemaakte keuzes: dit is een interpretatie (nergens wordt gemeld dat men een overzicht van gemaakte keuzes wil hebben) en onduidelijk. In de wensen wordt gemeld dat men een lijst van deelnemers wil kunnen maken en dat men deelnemers wil kunnen tellen.
+
+11. Wijzigen keuze op uitnodiging: dit is een onhandige omschrijving van de use case. De omschrijving van een use case moet ook later begrijpbaar zijn. Hanteer liever iets als ‘Wijzigen gemaakte deelnamekeuze’.
+ 
+
+14. + 15. Beëindigen inschrijvingsmogelijkheid op … : je kunt je afvragen of dit use cases zijn. Op het beëindigen van de inschrijvingsmogelijkheid zelf wordt namelijk geen duidelijk/expliciet resultaat beschreven.
+Het resultaat wat waarschijnlijk wordt beoogd is een resultaat op het inschrijven op een evenement of activiteit (nl. het geven van een melding of het niet tonen van een keuze of …).
+In een Gebeurtenis-reactielijst (niet UML) zal dit naar boven komen:
+
+Nr.	S/T	Event	Reactie
+1		PV wil evenement aanmaken	-	Opslaan evenement gegevens
+-	Melden dat evenement is aangemaakt
+2		PV wil evenement wijzigen	-	Opslaan gewijzigde evenement gegevens
+-	Melden dat evenement gewijzigd is
+3		PV verstuurt uitnodigingen	-	PV kan kiezen uit lijst evenementen
+-	Uitnodigingen worden per mail verstuurd
+4		Personeelslid wil zich aanmelden of afmelden voor evenement	-	Via link in mail naar scherm voor aan/afmelden evenement
+-	Melden of deelname aan evenement nog mogelijk is
+-	Deelname aan evenement (J/N) vastleggen
+-	Tonen lijst van activiteiten
+-	Melden of deelname aan activiteit nog mogelijk is
+-	Deelname aan activiteit vastleggen
+5		Na aanmelding deelname evenement: bevestigingsmail sturen	-	Identificeren deelnemer
+-	Bevestiging aan deelnemer sturen
+		Etc.	-
+
+ 
+
+Use case beschrijving (scenario’s)
+
+Omschrijving
+	Aanmaken evenement
+Case code	>> uniek
+Doel
+	Het aanmaken van een evenement waarvoor uitnodigingen moeten worden verstuurd en waarvoor deelname aan het evenement en aan eventuele activiteiten en eetgelegenheden worden bijgehouden
+
+Actoren
+	Personeelsvereniging (bestuur van)
+Startgebeurtenis
+	Een lid van de PV opent een scherm waarop evenementen kunnen worden ingevoerd
+
+Pre condities
+	Het PV-lid heeft toegang tot / is geautoriseerd voor het scherm waarop evenementen kunnen worden ingevoerd
+Uitgangspunten	1
+Basis scenario
+	1	Actor vult evenementgegevens in
+2	Invullen evt. activiteitgegevens bij evenement
+3	Invullen evt. ontbijt/lunch/dinergegevens
+4	Invullen doelgroep (intern/extern personeel, met/zonder partner, met/zonder kinderen)
+Alternatieve scenario’s
+	S1: Het evenement is al opgevoerd
+
+1a(S1) Bij het invullen van de datum van het evenement wordt gezocht naar een bestaand evenement op dezelfde datum
+1b(S1) Nadat een al ingevoerd evenement op dezelfde datum is gevonden wordt een melding gegeven met een omschrijving van het al opgevoerde evenement
+2(S1) –
+3(S1) –
+4(S1) –
+
+Functionele requirements	1	Een PV-lid kan – indien hiervoor geautoriseerd – via een scherm een evenement opvoeren.
+2	Er wordt gecontroleerd op reeds bestaande evenementen op de opgegeven evenement-datum. Nadat een al ingevoerd evenement op dezelfde datum is gevonden wordt een melding gegeven met een omschrijving van het al opgevoerde evenement, waarbij de gebruiker de mogelijkheid heeft om door te gaan (er is sprake van een ander evenement) of te stoppen.
+3	Een evenement heeft een omschrijving.
+4	Bij een evenement moet een doelgroep worden opgegeven
+5	Bij een evenement kunnen indien van toepassing activiteiten worden opgegeven via een scherm
+6	Bij een evenement kunnen indien van toepassing eetgelegenheid gegevens (tijd, plaats, keuken, etc.) worden opgegeven via een scherm
+7
+
+Uitspraak nodig	1	Xx
+
+== Activity Diagram
+
+Use Case Omschrijving
+Aanmaken evenement
+Use Case code
+>> uniek
+Doel
+Het aanmaken van een evenement waarvoor uitnodigingen moeten worden verstuurd en waarvoor deelname aan het evenement en aan eventuele activiteiten en eetgelegenheden worden bijgehouden
+Primaire actoren
+Bestuurslid Personeelsvereniging (PV)
+Startgebeurtenis
+Een lid van de PV opent een scherm waarop evenementen kunnen worden ingevoerd
+Pre condities
+Het PV-bestuurslid heeft toegang tot / is geautoriseerd voor het scherm waarop evenementen kunnen worden ingevoerd
+Uitgangspunten
+1
+Basis scenario
+
+1       PV vult evenementgegevens in
+2       PV vult activiteitgegevens in bij evenement
+3       PV vult evt. ontbijt/lunch/dinergegevens in
+4       PV vult de doelgroep in (intern/extern personeel, met/zonder partner, met/zonder kinderen)
+
+Alternatieve scenario’s
+
+S1: Het evenement is al opgevoerd
+1(S1) Bij het invullen van de datum van het evenement wordt een melding gegeven met een omschrijving van het al opgevoerde evenement op dezelfde datum; er wordt een keuze voor doorgaan of afbreken gegeven
+2(S1) –
+3(S1) –
+4(S1) –
